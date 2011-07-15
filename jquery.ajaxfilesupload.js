@@ -45,13 +45,19 @@
  
         // build the form data
         var formData = new FormData();
+        var totalSize = 0;
         if(settings.files.length > 0) {
           $.each(settings.files, function ( i, file ) {
-            formData.append(i, file);
+            if(file.size > 0) { // do not send empty files
+              formData.append(i, file);
+              totalSize =+ file.size;
+            };
           });
 
           // send it
-          xhr.send(formData);
+          if(totalSize > 0) {
+            xhr.send(formData);
+          };
         };
 
       });
