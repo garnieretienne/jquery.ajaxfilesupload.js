@@ -5,14 +5,14 @@ Usage
 -----
 
 ```javascript
-$.ajaxsendfiles({
+$.ajaxfilesupload({
   'files'        : files, // a files array
   'action'       : '/',   // destination
 });
 ```
 
 ```javascript
-$.ajaxsendfiles({
+$.ajaxfilesupload({
   'files'        : files,                          // a files array
   'action'       : '/',                            // destination
   'abort_button' : $('#abort_button'),             // build an abort button
@@ -55,7 +55,7 @@ $(function () {
     abort.text('ABORT');
     $('body').append(abort);
 
-    var upload = $(this).ajaxsendfiles({
+    var upload = $(this).ajaxfilesupload({
       'files'        : files,
       'action'       : '/',
       'abort_button' : abort,

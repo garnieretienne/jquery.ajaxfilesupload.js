@@ -16,7 +16,7 @@ $(function () {
     abort.text('ABORT');
     $('body').append(abort);
 
-    var upload = $(this).ajaxsendfiles({
+    var upload = $(this).ajaxfilesupload({
       'files'        : files,
       'action'       : '/',
       'abort_button' : abort,

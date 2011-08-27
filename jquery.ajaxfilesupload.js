@@ -65,7 +65,7 @@
     }
   };
 
-  $.fn.ajaxsendfiles = function( method ) {
+  $.fn.ajaxfilesupload = function( method ) {
 
     // method calling logic
     if ( methods[method] ) {
