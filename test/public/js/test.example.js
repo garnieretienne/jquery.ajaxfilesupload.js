@@ -18,6 +18,7 @@ $(function () {
 
     var upload = $(this).ajaxfilesupload({
       'files'        : files,
+      'inputs'       : ['#secret_key'],
       'action'       : '/',
       'abort_button' : abort,
       'progress'     : function(e) {

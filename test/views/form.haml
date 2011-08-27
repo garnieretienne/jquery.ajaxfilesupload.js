@@ -6,6 +6,7 @@
     %h1 Testing: jquery.ajaxfilesupload.js
     %form{'method' => 'post', 'enctype' => 'multipart/form-data', 'id' => 'awesome_form'}
       %input{'type' => 'file', 'id' => 'files', 'name' => 'files[]', 'multiple' => 'multiple'}
+      %input{'type' => 'hidden', 'id' => 'secret_key', 'value' => 'im-the-secret'}
       %input{'type' => 'submit', 'value' => 'Test!'}
     #upload_status
     %table#filelist

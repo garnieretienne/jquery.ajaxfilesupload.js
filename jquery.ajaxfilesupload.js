@@ -3,6 +3,7 @@
   // default settings
   var settings = {
     'files'         : new Array(),
+    'inputs'        : new Array(),
     'action'        : '',
     'abort_button'  : null,
     'progress'      : function(e){},
@@ -47,11 +48,16 @@
         var formData = new FormData();
         var totalSize = 0;
         if(settings.files.length > 0) {
-          $.each(settings.files, function ( i, file ) {
+          $.each(settings.files, function(i, file) {
             if(file.size > 0) { // do not send empty files
               formData.append(i, file);
               totalSize =+ file.size;
             };
+          });
+
+          // add aditional inputs if asked, using jquery selector
+          $.each(settings.inputs, function(i, input) {
+            formData.append($(input).attr('id'), $(input).attr('value'));
           });
 
           // send it

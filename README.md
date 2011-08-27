@@ -13,21 +13,22 @@ $.ajaxfilesupload({
 
 ```javascript
 $.ajaxfilesupload({
-  'files'        : files,                          // a files array
-  'action'       : '/',                            // destination
-  'abort_button' : $('#abort_button'),             // build an abort button
-  'progress'     : function(e) {                   // progress event
+  'files'        : files,                                         // a files array
+  'inputs'       : ['#jquery_selector', '#authenticity_token']    // other inputs to include in the form
+  'action'       : '/',                                           // destination
+  'abort_button' : $('#abort_button'),                            // build an abort button
+  'progress'     : function(e) {                                  // progress event
     percent = Math.round(e.loaded/e.total*100);
     console.log(percent+' %');
   },
   'success'      : function(e) {
-                                                   // load event
+                                                                  // load event
   },
   'failed'       : function(e) {
-                                                   // error and timeout event
+                                                                  // error and timeout event
   },
   'abort'        : function(e) {
-                                                   // abort event
+                                                                  // abort event
   }
 });
 ```
@@ -77,4 +78,14 @@ $(function () {
   });
 });
 
+```
+
+Using with Rails
+----------------
+
+If you're using this plugin with rails, take care to add $('#authenticity_token') to the inputs options, to be sure your session will be reconized.
+It can avoid this error: 
+
+```
+WARNING: Can't verify CSRF token authenticity
 ```

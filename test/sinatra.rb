@@ -10,4 +10,5 @@ get '/' do
 end
 
 post '/' do
+  'Secret key: '+params[:secret_key]
 end
