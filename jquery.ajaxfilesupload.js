@@ -56,7 +56,7 @@
         if(settings.files.length > 0) {
           $.each(settings.files, function(i, file) {
             if(file.size > 0) { // do not send empty files
-              formData.append(i, file);
+              formData.append("files["+i+"]", file);
               totalSize =+ file.size;
             };
           });

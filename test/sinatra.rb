@@ -10,5 +10,10 @@ get '/' do
 end
 
 post '/' do
-  'Secret key: '+params[:secret_key] if params[:secret_key]
+  response = "Files:\n"
+  params[:files].each do |i, file|
+    response += '- '+file[:filename]+"\n"
+  end
+  response += "\nSecret key: "+params[:secret_key] if params[:secret_key]
+  response
 end
