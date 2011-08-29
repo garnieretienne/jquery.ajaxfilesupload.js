@@ -16,4 +16,8 @@
     %script{'type' => 'text/javascript', 'src' => 'test/public/js/jquery-1.6.1.min.js'}
     %script{'type' => 'text/javascript', 'src' => 'jquery.ajaxfilesupload.js'}
     %script{'type' => 'text/javascript', 'src' => 'test/public/js/test.example.js'}
+    %h2 Testing: Upload must fail (404)
+    %form{'method' => 'post', 'action' => '/fail', 'enctype' => 'multipart/form-data', 'id' => 'must_fail_form'}
+      %input{'type' => 'file', 'id' => 'f_files', 'name' => 'files[]', 'multiple' => 'multiple'}
+      %input{'type' => 'submit', 'value' => 'Must Fail!'}
 

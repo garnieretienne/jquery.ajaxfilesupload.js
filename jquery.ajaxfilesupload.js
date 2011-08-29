@@ -32,10 +32,16 @@
 
         // callbacks
         xhr.upload.onprogress = settings.progress;
-        xhr.upload.onload     = settings.success;
         xhr.upload.onerror    = settings.failed;
         xhr.upload.ontimeout  = settings.failed;
         xhr.upload.onabort    = settings.abort;
+        xhr.upload.onload     = function() {
+          if (xhr.status == 200) {
+            settings.success();
+          } else {
+            settings.failed();
+          }
+        }
 
         // build abort button
         if (settings.abort_button) {

@@ -14,7 +14,7 @@ $(function () {
     // build an abort button
     abort = $('<div id="abort">');
     abort.text('ABORT');
-    $('body').append(abort);
+    $('#awesome_form').after(abort);
 
     var upload = $(this).ajaxfilesupload({
       'files'        : files,
@@ -23,21 +23,39 @@ $(function () {
       'abort_button' : abort,
       'progress'     : function(e) {
         percent = Math.round(e.loaded/e.total*100);
-        $('.status').text('prepare to send ...');
-        $('#upload_status').text(percent+' %');
+        console.log(percent+' %');
       },
       'success'      : function() {
-        $('.status').text('uploaded!');
+        console.log('uploaded!');
       },
       'failed'       : function() {
-        $('.status').text('failed!');
+        console.log('failed!');
       },
       'abort'        : function() {
-        $('.status').text('aborded!');
+        console.log('aborded!');
       }
     });
-
-    
   });
 
+  $('#must_fail_form').submit(function(e) {
+    e.preventDefault();
+
+    // get the FileList object
+    var files = $('#files').prop('files');
+
+    var upload = $(this).ajaxfilesupload({
+      'files'        : files,
+      'action'       : $(this).attr('action'),
+      'progress'     : function(e) {
+        percent = Math.round(e.loaded/e.total*100);
+        console.log(percent+' %');
+      },
+      'success'      : function() {
+        console.log('Should be declared as failed: Testing failed! :)');
+      },
+      'failed'       : function() {
+        console.log('Should be declared as failed: Testing pass! :)');
+      }
+    });
+  });
 });

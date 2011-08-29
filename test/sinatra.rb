@@ -10,5 +10,5 @@ get '/' do
 end
 
 post '/' do
-  'Secret key: '+params[:secret_key]
+  'Secret key: '+params[:secret_key] if params[:secret_key]
 end
