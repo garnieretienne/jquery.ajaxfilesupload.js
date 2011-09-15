@@ -40,7 +40,7 @@
             if (xhr.status == 200) {
               settings.success(xhr.response);
             } else {
-              settings.failed();
+              settings.failed(xhr.status, xhr.statusText);
             }
           }
         };

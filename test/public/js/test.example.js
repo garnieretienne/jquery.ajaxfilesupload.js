@@ -53,8 +53,9 @@ $(function () {
       'success'      : function() {
         console.log('Should be declared as failed: Testing failed! :)');
       },
-      'failed'       : function() {
+      'failed'       : function(status, statusText) {
         console.log('Should be declared as failed: Testing pass! :)');
+        console.log('Error: '+status+' - '+statusText);
       }
     });
   });
