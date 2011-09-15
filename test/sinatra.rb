@@ -17,3 +17,8 @@ post '/' do
   response += "\nSecret key: "+params[:secret_key] if params[:secret_key]
   response
 end
+
+post '/alert' do
+  content_type 'text/javascript'
+  "alert('Test is a success !');"
+end

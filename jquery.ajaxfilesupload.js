@@ -7,7 +7,7 @@
     'action'        : '',
     'abort_button'  : null,
     'progress'      : function(e){},
-    'success'       : function(e){},
+    'success'       : function(response){},
     'failed'        : function(e){},
     'abort'         : function(e){}
   };
@@ -35,13 +35,15 @@
         xhr.upload.onerror    = settings.failed;
         xhr.upload.ontimeout  = settings.failed;
         xhr.upload.onabort    = settings.abort;
-        xhr.upload.onload     = function() {
-          if (xhr.status == 200) {
-            settings.success();
-          } else {
-            settings.failed();
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState == 4) {
+            if (xhr.status == 200) {
+              settings.success(xhr.response);
+            } else {
+              settings.failed();
+            }
           }
-        }
+        };
 
         // build abort button
         if (settings.abort_button) {

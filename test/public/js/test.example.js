@@ -58,4 +58,21 @@ $(function () {
       }
     });
   });
+
+  // Testing ajax response
+  $('#alert_form').submit(function(e) {
+    e.preventDefault();
+
+    // get the FileList object
+    var files = $('#files').prop('files');
+
+    var upload = $(this).ajaxfilesupload({
+      'files'        : files,
+      'action'       : $(this).attr('action'),
+      'success'      : function(response) {
+        console.log(response);
+        $.globalEval(response);
+      },
+    });
+  });
 });
